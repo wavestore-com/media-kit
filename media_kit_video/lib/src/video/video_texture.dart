@@ -448,7 +448,10 @@ Future<void> defaultExitNativeFullscreen() async {
             overlays: SystemUiOverlay.values,
           ),
           SystemChrome.setPreferredOrientations(
-            [],
+            [
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown,
+            ],
           ),
         ],
       );
