@@ -43,32 +43,37 @@ Future<void> enterFullscreen(BuildContext context) {
                       contextNotifier: contextNotifierValue,
                       videoViewParametersNotifier:
                           videoViewParametersNotifierValue,
-                      child: Video(
-                        controller: controllerValue,
-                        // Do not restrict the video's width & height in fullscreen mode:
-                        width: null,
-                        height: null,
-                        fit: videoViewParametersNotifierValue.value.fit,
-                        fill: videoViewParametersNotifierValue.value.fill,
-                        alignment:
-                            videoViewParametersNotifierValue.value.alignment,
-                        aspectRatio:
-                            videoViewParametersNotifierValue.value.aspectRatio,
-                        filterQuality: videoViewParametersNotifierValue
-                            .value.filterQuality,
-                        controls:
-                            videoViewParametersNotifierValue.value.controls,
-                        // Do not acquire or modify existing wakelock in fullscreen mode:
-                        wakelock: false,
-                        pauseUponEnteringBackgroundMode:
-                            stateValue.widget.pauseUponEnteringBackgroundMode,
-                        resumeUponEnteringForegroundMode:
-                            stateValue.widget.resumeUponEnteringForegroundMode,
-                        subtitleViewConfiguration:
-                            videoViewParametersNotifierValue
-                                .value.subtitleViewConfiguration,
-                        onEnterFullscreen: stateValue.widget.onEnterFullscreen,
-                        onExitFullscreen: stateValue.widget.onExitFullscreen,
+                      child: InteractiveViewer(
+                        minScale: 1,
+                        maxScale: 48,
+                        child: Video(
+                          controller: controllerValue,
+                          // Do not restrict the video's width & height in fullscreen mode:
+                          width: null,
+                          height: null,
+                          fit: videoViewParametersNotifierValue.value.fit,
+                          fill: videoViewParametersNotifierValue.value.fill,
+                          alignment:
+                              videoViewParametersNotifierValue.value.alignment,
+                          aspectRatio: videoViewParametersNotifierValue
+                              .value.aspectRatio,
+                          filterQuality: videoViewParametersNotifierValue
+                              .value.filterQuality,
+                          controls:
+                              videoViewParametersNotifierValue.value.controls,
+                          // Do not acquire or modify existing wakelock in fullscreen mode:
+                          wakelock: false,
+                          pauseUponEnteringBackgroundMode:
+                              stateValue.widget.pauseUponEnteringBackgroundMode,
+                          resumeUponEnteringForegroundMode: stateValue
+                              .widget.resumeUponEnteringForegroundMode,
+                          subtitleViewConfiguration:
+                              videoViewParametersNotifierValue
+                                  .value.subtitleViewConfiguration,
+                          onEnterFullscreen:
+                              stateValue.widget.onEnterFullscreen,
+                          onExitFullscreen: stateValue.widget.onExitFullscreen,
+                        ),
                       ),
                     ),
                   ),
